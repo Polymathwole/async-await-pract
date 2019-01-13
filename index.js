@@ -18,7 +18,7 @@ const saySomething = (whatToSay) => console.log(whatToSay);
 //setTimeout(() => saySomething("3 seconds passed"), 3000); // asynchronous
 //saySomething('Bleh!'); // synchronous
 
-//const wait = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
+//const wait = ms => new Promise((resolve, reject) => setTimeout(resolve, ms)); this will cause resolve to execute immediately if I pass a value to it
 const wait = ms => new Promise((resolve, reject) => setTimeout(() => {
     resolve("3 seconds passed")
 }, ms));
