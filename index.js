@@ -18,11 +18,15 @@ const saySomething = (whatToSay) => console.log(whatToSay);
 //setTimeout(() => saySomething("3 seconds passed"), 3000); // asynchronous
 //saySomething('Bleh!'); // synchronous
 
-const wait = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
+//const wait = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
+const wait = ms => new Promise((resolve, reject) => setTimeout(() => {
+    resolve("3 seconds passed")
+}, ms));
 const failureCallback = (err) => console.log(`An error has occured: ${err.message} !!!`);
 
 wait(3000)
-.then(() => saySomething("3 seconds passed"), () => {throw new Error('Fail!')})
+.then((val) => saySomething(val), () => {throw new Error('Fail!')})
+//.then(() => saySomething("3 seconds passed"), () => {throw new Error('Fail!')})
 //.then(() => {throw new Error('Resolve fail!')}, () => {throw new Error('Fail!')})
 //.then(() => saySomething("3 seconds passed"), () => console.log('Fail!'))
 .catch(failureCallback);
